@@ -60,6 +60,5 @@ void bms_victron_smart_shunt::Task::processIO()
 {
     Driver* driver = static_cast<bms_victron_smart_shunt::Driver*>(mDriver);
     bms_victron_smart_shunt::SmartShuntFeedback feedback = driver->processOne();
-    feedback.timestamp = base::Time::now();
     _smart_shunt_feedback.write(feedback);
 }
