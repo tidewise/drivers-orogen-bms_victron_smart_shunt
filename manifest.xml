@@ -10,4 +10,5 @@
   <depend package="drivers/bms_victron_smart_shunt" />
   <depend package="base/orogen/types" />
   <depend package="drivers/orogen/iodrivers_base" />
+  <depend package="drivers/orogen/power_base" />
 </package>
