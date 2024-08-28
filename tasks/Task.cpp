@@ -60,7 +60,7 @@ static BatteryStatus toBatteryStatus(SmartShuntFeedback const& feedback,
     BatteryStatus battery_status;
     battery_status.time = feedback.timestamp;
     battery_status.temperature = feedback.temperature;
-    battery_status.charge = feedback.state_of_charge;
+    battery_status.charge = feedback.state_of_charge / 100;
     battery_status.current = feedback.current;
     battery_status.voltage = feedback.voltage;
     battery_status.max_current = max_current;
