@@ -22,8 +22,6 @@ task_context "Task", subclasses: "iodrivers_base::Task" do
     output_port "smart_shunt_feedback", "bms_victron_smart_shunt::SmartShuntFeedback"
     # The battery status, if present
     output_port "battery_status", "/power_base/BatteryStatus"
-    # The DC source status, if present
-    output_port "dc_source_status", "/power_base/DCSourceStatus"
 
     fd_driven
 end

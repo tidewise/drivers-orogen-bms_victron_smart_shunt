@@ -34,7 +34,7 @@ namespace bms_victron_smart_shunt {
          * @brief The maximum registred current
          *
          */
-        double m_max_current = base::unknown<double>();
+        double m_max_current = 0;
         /**
          * @brief The number of needed packets to compose a full update
          * 
