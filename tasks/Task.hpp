@@ -3,6 +3,7 @@
 #ifndef BMS_VICTRON_SMART_SHUNT_TASK_TASK_HPP
 #define BMS_VICTRON_SMART_SHUNT_TASK_TASK_HPP
 
+#include "base/Float.hpp"
 #include "bms_victron_smart_shunt/TaskBase.hpp"
 
 namespace bms_victron_smart_shunt {
@@ -29,6 +30,23 @@ namespace bms_victron_smart_shunt {
         friend class TaskBase;
 
     protected:
+        /**
+         * @brief The maximum registred current
+         *
+         */
+        double m_max_current = 0;
+        /**
+         * @brief The number of needed packets to compose a full update
+         *
+         */
+        int m_packets_to_compose_a_full_feedback = 2;
+        /**
+         * @brief Updates the maximum registred current
+         *
+         * @param actual_current
+         */
+        void updateMaxCurrent(double actual_current);
+
     public:
         /** TaskContext constructor for Task
          * \param name Name of the task. This name needs to be unique to make it
