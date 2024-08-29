@@ -37,13 +37,13 @@ namespace bms_victron_smart_shunt {
         double m_max_current = 0;
         /**
          * @brief The number of needed packets to compose a full update
-         * 
+         *
          */
-        int m_needed_packets = 2;
+        int m_packets_to_compose_a_full_feedback = 2;
         /**
          * @brief Updates the maximum registred current
-         * 
-         * @param actual_current 
+         *
+         * @param actual_current
          */
         void updateMaxCurrent(double actual_current);
 

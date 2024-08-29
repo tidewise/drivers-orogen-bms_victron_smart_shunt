@@ -28,7 +28,7 @@ bool bms_victron_smart_shunt::Task::configureHook()
     if (!TaskBase::configureHook())
         return false;
     guard.commit();
-    m_needed_packets = _needed_packets.get();
+    m_packets_to_compose_a_full_feedback = _packets_to_compose_a_full_feedback.get();
     m_max_current = 0;
     return true;
 }
@@ -78,9 +78,10 @@ void bms_victron_smart_shunt::Task::updateMaxCurrent(double actual_current)
 void bms_victron_smart_shunt::Task::processIO()
 {
     Driver* driver = static_cast<bms_victron_smart_shunt::Driver*>(mDriver);
-    SmartShuntFeedback feedback = driver->processOne(m_needed_packets);
+    SmartShuntFeedback feedback =
+        driver->processOne(m_packets_to_compose_a_full_feedback);
     updateMaxCurrent(feedback.current);
-    if (driver->packetsCounter() >= 2) {
+    if (driver->packetsCounter() >= m_packets_to_compose_a_full_feedback) {
         _smart_shunt_feedback.write(feedback);
         _battery_status.write(toBatteryStatus(feedback, m_max_current));
     }

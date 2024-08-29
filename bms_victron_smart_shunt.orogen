@@ -16,7 +16,7 @@ task_context "Task", subclasses: "iodrivers_base::Task" do
     needs_configuration
 
     # The number of packets needed to compose a full feedback update
-    property "needed_packets", "int", 2
+    property "packets_to_compose_a_full_feedback", "int", 2
 
     # The complete Victron Smart Shunt feedback
     output_port "smart_shunt_feedback", "bms_victron_smart_shunt::SmartShuntFeedback"
