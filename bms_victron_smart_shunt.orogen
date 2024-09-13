@@ -17,6 +17,8 @@ task_context "Task", subclasses: "iodrivers_base::Task" do
 
     # The number of packets needed to compose a full feedback update
     property "packets_to_compose_a_full_feedback", "int", 2
+    # Maximum current that can safely be output by the batteries this BMS is monitoring
+    property "max_current", "double", 0
 
     # The complete Victron Smart Shunt feedback
     output_port "smart_shunt_feedback", "bms_victron_smart_shunt::SmartShuntFeedback"
