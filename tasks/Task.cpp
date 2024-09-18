@@ -28,7 +28,6 @@ bool bms_victron_smart_shunt::Task::configureHook()
     if (!TaskBase::configureHook())
         return false;
     guard.commit();
-    m_packets_to_compose_a_full_feedback = _packets_to_compose_a_full_feedback.get();
     return true;
 }
 bool bms_victron_smart_shunt::Task::startHook()
@@ -70,10 +69,7 @@ static BatteryStatus toBatteryStatus(SmartShuntFeedback const& feedback,
 void bms_victron_smart_shunt::Task::processIO()
 {
     Driver* driver = static_cast<bms_victron_smart_shunt::Driver*>(mDriver);
-    SmartShuntFeedback feedback =
-        driver->processOne(m_packets_to_compose_a_full_feedback);
-    if (driver->packetsCounter() >= m_packets_to_compose_a_full_feedback) {
-        _smart_shunt_feedback.write(feedback);
-        _battery_status.write(toBatteryStatus(feedback, _max_current.get()));
-    }
+    SmartShuntFeedback feedback = driver->processOne();
+    _smart_shunt_feedback.write(feedback);
+    _battery_status.write(toBatteryStatus(feedback, _max_current.get()));
 }

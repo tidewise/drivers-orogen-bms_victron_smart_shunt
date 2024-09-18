@@ -30,12 +30,6 @@ namespace bms_victron_smart_shunt {
         friend class TaskBase;
 
     protected:
-        /**
-         * @brief The number of needed packets to compose a full update
-         *
-         */
-        int m_packets_to_compose_a_full_feedback = 2;
-
     public:
         /** TaskContext constructor for Task
          * \param name Name of the task. This name needs to be unique to make it
