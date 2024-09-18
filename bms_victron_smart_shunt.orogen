@@ -15,8 +15,6 @@ import_types_from "power_base"
 task_context "Task", subclasses: "iodrivers_base::Task" do
     needs_configuration
 
-    # The number of packets needed to compose a full feedback update
-    property "packets_to_compose_a_full_feedback", "int", 2
     # Maximum current that can safely be output by the batteries this BMS is monitoring
     property "max_current", "double", 0
 
